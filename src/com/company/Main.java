@@ -36,7 +36,7 @@ public class Main {
 
 
         System.out.println(stockList);
-        for (String s: stockList.Items().keySet()){
+        for (StockedItems s: stockList.Items().values()){
             System.out.println(s);
         }
 
@@ -46,6 +46,11 @@ public class Main {
         addToCart(timBasket, "butter", 1);
         addToCart(timBasket, "jam", 3);
         addToCart(timBasket, "car", 2);
+
+        System.out.println(timBasket);
+
+        removeFromCart(timBasket, "jam", 2);
+        removeFromCart(timBasket, "butter", 3);
 
         System.out.println(timBasket);
         System.out.println(stockList);
@@ -58,10 +63,23 @@ public class Main {
             System.out.println("We don't sell " + item + "s");
             return 0;
         }
-        if (stockList.reserveStock(stockItem, quantity) > 0){
+        if (stockList.reserveStock(stockItem, quantity) != 0){
             basket.addToBasket(stockItem, quantity);
             return quantity;
         }
+        return 0;
+    }
+    public static int removeFromCart(Basket basket, String item, int quantity){
+        StockedItems stockItem = stockList.get(item);
+        if (stockItem == null){
+            System.out.println("We don't sell " + item + "s");
+            return 0;
+        }
+        if (stockItem.getReserved() >= quantity){
+            basket.removeFromBasket(stockItem, quantity);
+            return quantity;
+        }
+        System.out.println("You do not have that many products in your basket");
         return 0;
     }
 

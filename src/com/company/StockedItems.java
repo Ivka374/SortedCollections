@@ -22,6 +22,9 @@ public class StockedItems implements Comparable<StockedItems>{
     public int quantityInStock() {
         return inStock;
     }
+    public int getReserved() {
+        return reserved;
+    }
 
     public void setPrice(double price){
         if (price > 0.0){
@@ -36,12 +39,10 @@ public class StockedItems implements Comparable<StockedItems>{
         }
     }
 
-    public boolean reserveStock(int quantity){
+    public void reserveStock(int quantity){
         if (quantity <= inStock){
             reserved += quantity;
-            return true;
         }
-        return false;
     }
 
     @Override

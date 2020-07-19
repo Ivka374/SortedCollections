@@ -31,7 +31,7 @@ public class StockList {
     }
 
     public int reserveStock(StockedItems items, int quantity){
-        StockedItems onList = list.getOrDefault(items.getName(), null);
+        StockedItems onList = list.getOrDefault(items.getName(), null);        //practically the same as sellStock() but slightly different
         if (onList != null && onList.quantityInStock() >= quantity && quantity > 0){
             onList.reserveStock(quantity);
             return quantity;

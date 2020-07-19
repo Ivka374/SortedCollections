@@ -15,8 +15,14 @@ public class Basket {
         if(item != null && quantity != 0){
             int inBasket = list.getOrDefault(item, 0);
             list.put(item, inBasket + quantity);
+            if (list.get(item) == 0)list.remove(item, 0);
             return inBasket;
         }
+        return 0;
+    }
+
+    public int removeFromBasket(StockedItems item, int quantity){
+        if (quantity <= list.get(item)) return addToBasket(item, -quantity);
         return 0;
     }
 
@@ -29,7 +35,7 @@ public class Basket {
         String s = "\nShopping basket " + name + " contains " + list.size() + (list.size() == 1 ? " item" : " items") + "\n";
         double totalCost = 0;
         for (Map.Entry<StockedItems, Integer> item : list.entrySet()){
-            s = s + item.getKey() + ", " + item.getValue() + " purchased\n";
+            s = s + item.getKey() + ", " + item.getValue() + " reserved\n";
             totalCost += item.getKey().getPrice() * item.getValue();
         }
         return s + "Total cost: " + totalCost;
