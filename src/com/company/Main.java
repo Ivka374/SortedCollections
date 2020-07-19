@@ -42,26 +42,30 @@ public class Main {
 
         Basket timBasket = new Basket("Tim");
 
-        sellItem(timBasket, "butter", 1);
-        sellItem(timBasket, "butter", 1);
-        sellItem(timBasket, "jam", 3);
-        sellItem(timBasket, "car", 2);
+        addToCart(timBasket, "butter", 1);
+        addToCart(timBasket, "butter", 1);
+        addToCart(timBasket, "jam", 3);
+        addToCart(timBasket, "car", 2);
 
         System.out.println(timBasket);
         System.out.println(stockList);
 
     }
 
-    public static int sellItem(Basket basket, String item, int quantity){
-        StockedItems stockedItems = stockList.get(item);
-        if (stockedItems == null){
+    public static int addToCart(Basket basket, String item, int quantity){       //slightly altered version of the sellStock() method to fit its purpose
+        StockedItems stockItem = stockList.get(item);
+        if (stockItem == null){
             System.out.println("We don't sell " + item + "s");
             return 0;
         }
-        if (stockList.sellStock(stockedItems, quantity) != 0){
-            basket.addToBasket(stockedItems, quantity);
+        if (stockList.reserveStock(stockItem, quantity) > 0){
+            basket.addToBasket(stockItem, quantity);
             return quantity;
         }
         return 0;
     }
+
+    /*public static int checkOut(Basket basket){
+
+    }*/
 }

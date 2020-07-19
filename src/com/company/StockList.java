@@ -30,6 +30,15 @@ public class StockList {
         return 0;
     }
 
+    public int reserveStock(StockedItems items, int quantity){
+        StockedItems onList = list.getOrDefault(items.getName(), null);
+        if (onList != null && onList.quantityInStock() >= quantity && quantity > 0){
+            onList.reserveStock(quantity);
+            return quantity;
+        }
+        return 0;
+    }
+
     public StockedItems get(String key){
         return list.get(key);
     }

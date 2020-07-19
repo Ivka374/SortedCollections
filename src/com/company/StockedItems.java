@@ -4,11 +4,13 @@ public class StockedItems implements Comparable<StockedItems>{
     private final String name;
     private double price;
     private int inStock;
+    private int reserved;
 
     public StockedItems(String name, double price, int inStock) {
         this.name = name;
         this.price = price;
         this.inStock = inStock;
+        this.reserved = 0;
     }
 
     public String getName() {
@@ -32,6 +34,14 @@ public class StockedItems implements Comparable<StockedItems>{
         if (newQuantity >= 0){
             this.inStock = newQuantity;
         }
+    }
+
+    public boolean reserveStock(int quantity){
+        if (quantity <= inStock){
+            reserved += quantity;
+            return true;
+        }
+        return false;
     }
 
     @Override
