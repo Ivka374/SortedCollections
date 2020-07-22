@@ -21,6 +21,15 @@ public class Basket {
         return 0;
     }
 
+    public void checkOut(){           //un-reserves items with negative quantity and removes everything reserved
+        for (Map.Entry<StockedItems, Integer> reservedItem : list.entrySet()) {
+            int amount = reservedItem.getValue();
+            StockedItems item = reservedItem.getKey();
+            item.reserveStock(-amount);
+            item.adjustStock(-amount);
+        }
+    }
+
     public int removeFromBasket(StockedItems item, int quantity){
         if (quantity <= list.get(item)) return addToBasket(item, -quantity);
         return 0;

@@ -21,18 +21,18 @@ public class StockList {
         return 0;
     }
 
-    public int sellStock(StockedItems items, int quantity){
+    public int sellStock(StockedItems items){              //can be used only on check-out
         StockedItems onList = list.getOrDefault(items.getName(), null);
-        if (onList != null && onList.quantityInStock() >= quantity && quantity > 0){
-            onList.adjustStock(-quantity);
-            return quantity;
+        if (onList != null && items.getReserved() > 0){
+            onList.adjustStock(-items.getReserved());
+            return items.getReserved();
         }
         return 0;
     }
 
-    public int reserveStock(StockedItems items, int quantity){
-        StockedItems onList = list.getOrDefault(items.getName(), null);        //practically the same as sellStock() but slightly different
-        if (onList != null && onList.quantityInStock() >= quantity && quantity > 0){
+    public int reserveStock(StockedItems item, int quantity){
+        StockedItems onList = list.getOrDefault(item.getName(), null);
+        if (onList != null && quantity > 0){
             onList.reserveStock(quantity);
             return quantity;
         }

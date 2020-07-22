@@ -52,7 +52,8 @@ public class Main {
         removeFromCart(timBasket, "jam", 2);
         removeFromCart(timBasket, "butter", 3);
 
-        System.out.println(timBasket);
+        payForProduct(timBasket);
+
         System.out.println(stockList);
 
     }
@@ -83,7 +84,9 @@ public class Main {
         return 0;
     }
 
-    /*public static int checkOut(Basket basket){
-
-    }*/
+    public static void payForProduct(Basket basket){
+        System.out.println(basket);
+        System.out.println("Proceeding with check-out...");
+        basket.checkOut();
+    }
 }

@@ -40,7 +40,7 @@ public class StockedItems implements Comparable<StockedItems>{
     }
 
     public void reserveStock(int quantity){
-        if (quantity <= inStock){
+        if (quantity <= inStock - reserved){
             reserved += quantity;
         }
     }
