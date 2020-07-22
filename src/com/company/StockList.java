@@ -57,7 +57,8 @@ public class StockList {
             double itemValue = stockedItems.getPrice() * stockedItems.quantityInStock();
 
             s = s + stockedItems + ". There are " + stockedItems.quantityInStock() + " in stock. Value of items: ";
-            s = s + String.format("%.2f", itemValue) + "\n";
+            s = s + String.format("%.2f", itemValue);
+            s = s + " and items reserved: " + stockedItems.getReserved() + "\n";
 
             totalCost += itemValue;
         }
