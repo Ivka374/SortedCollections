@@ -59,6 +59,8 @@ public class Main {
 
         payForProduct(timBasket);
 
+        System.out.println(timBasket);
+
         System.out.println(stockList);
 
     }
