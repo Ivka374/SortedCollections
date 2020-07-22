@@ -28,6 +28,7 @@ public class Basket {
             item.reserveStock(-amount);
             item.adjustStock(-amount);
         }
+        list.clear();
     }
 
     public int removeFromBasket(StockedItems item, int quantity){

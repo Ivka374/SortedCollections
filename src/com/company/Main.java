@@ -59,7 +59,7 @@ public class Main {
 
         payForProduct(timBasket);
 
-        System.out.println(timBasket);
+        System.out.println(timBasket);          //checks if the basket is now empty
 
         System.out.println(stockList);
 
