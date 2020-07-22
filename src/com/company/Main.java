@@ -36,12 +36,14 @@ public class Main {
 
 
         System.out.println(stockList);
+        System.out.println();
         for (StockedItems s: stockList.Items().values()){
             System.out.println(s);
         }
 
         Basket timBasket = new Basket("Tim");
 
+        System.out.println();
         addToCart(timBasket, "butter", 1);
         addToCart(timBasket, "butter", 1);
         addToCart(timBasket, "jam", 3);
@@ -49,8 +51,11 @@ public class Main {
 
         System.out.println(timBasket);
 
+        System.out.println();
         removeFromCart(timBasket, "jam", 2);
         removeFromCart(timBasket, "butter", 3);
+
+        System.out.println(stockList);
 
         payForProduct(timBasket);
 
@@ -88,5 +93,6 @@ public class Main {
         System.out.println(basket);
         System.out.println("Proceeding with check-out...");
         basket.checkOut();
+        System.out.println("Thank you for shopping with us!");
     }
 }
