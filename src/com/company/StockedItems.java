@@ -39,7 +39,7 @@ public class StockedItems implements Comparable<StockedItems>{
         }
     }
 
-    public void reserveStock(int quantity){
+    public void adjustReservedStock(int quantity){
         if (quantity <= inStock - reserved){
             reserved += quantity;
         }

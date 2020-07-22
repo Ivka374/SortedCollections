@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Basket {
     private final String name;
-    private final Map<StockedItems, Integer> list;   //automatically everything is reserved
+    private final Map<StockedItems, Integer> list;
 
     public Basket(String name) {
         this.name = name;
@@ -15,17 +15,20 @@ public class Basket {
         if(item != null && quantity != 0){
             int inBasket = list.getOrDefault(item, 0);
             list.put(item, inBasket + quantity);
+            if (quantity < 0){
+                item.adjustReservedStock(quantity);
+            }
             if (list.get(item) == 0)list.remove(item, 0);
             return inBasket;
         }
         return 0;
     }
 
-    public void checkOut(){           //un-reserves items with negative quantity and removes everything reserved
+    public void checkOut(){           //un-reserves items using negative quantity and removes everything reserved
         for (Map.Entry<StockedItems, Integer> reservedItem : list.entrySet()) {
             int amount = reservedItem.getValue();
             StockedItems item = reservedItem.getKey();
-            item.reserveStock(-amount);
+            item.adjustReservedStock(-amount);
             item.adjustStock(-amount);
         }
         list.clear();

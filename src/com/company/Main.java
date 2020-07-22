@@ -57,7 +57,7 @@ public class Main {
 
         System.out.println(stockList);
 
-        payForProduct(timBasket);
+        checkOutCart(timBasket);
 
         System.out.println(timBasket);          //checks if the basket is now empty
 
@@ -91,7 +91,7 @@ public class Main {
         return 0;
     }
 
-    public static void payForProduct(Basket basket){
+    public static void checkOutCart(Basket basket){
         System.out.println(basket);
         System.out.println("Proceeding with check-out...");
         basket.checkOut();
